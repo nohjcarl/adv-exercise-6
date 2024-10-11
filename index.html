@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADV EXERCISE 6 PUSH AND POP</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 20px auto;
+            width: 50%;
+        }
+
+        table, th, td {
+            border: 1px solid white;
+            text-align: center;
+            color: white;
+        }
+
+        th, td {
+            padding: 15px;
+        }
+
+        .controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 200px;
+        }
+
+        button {
+            padding: 10px;
+            margin-left: 10px;
+            background-color: #555;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #777;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center;">PUSH AND POP NI JHON CARL AYUDA</h1>
+    <div class="controls">
+        <input type="text" id="textInput" placeholder="Type something">
+        <button onclick="pushToStack()">Push</button>
+        <button onclick="popFromStack()">Pop</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Stack</th>
+            </tr>
+        </thead>
+        <tbody id="stackTableBody">
+           
+            <tr><td></td></tr>
+            <tr><td></td></tr>
+            <tr><td></td></tr>
+            <tr><td></td></tr>
+            <tr><td></td></tr>
+            <tr><td></td></tr>
+            <tr><td></td></tr>
+            <tr><td></td></tr>
+            <tr><td></td></tr>
+            <tr><td></td></tr>
+        </tbody>
+    </table>
+
+    <script>
+        let stack = [];
+
+        function pushToStack() {
+            const textInput = document.getElementById('textInput').value;
+            if (textInput === "") {
+                alert("Please enter a text.");
+                return;
+            }
+
+            if (stack.length < 10) {
+                stack.push(textInput);
+                renderStack();
+            } else {
+                alert("Stack is full!");
+            }
+
+            document.getElementById('textInput').value = "";
+        }
+
+        function popFromStack() {
+            if (stack.length > 0) {
+                stack.pop();
+                renderStack();
+            } else {
+                alert("Stack is empty!");
+            }
+        }
+
+        function renderStack() {
+            const tableBody = document.getElementById('stackTableBody');
+            const rows = tableBody.getElementsByTagName('tr');
+
+            
+            for (let i = 0; i < 10; i++) {
+                const cell = rows[i].getElementsByTagName('td')[0];
+                cell.textContent = stack[9 - i] || ""; 
+            }
+        }
+    </script>
+</body>
+</html>
